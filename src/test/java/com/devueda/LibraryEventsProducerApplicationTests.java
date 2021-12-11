@@ -1,4 +1,4 @@
-package com.devueda.libraryeventsproducer;
+package com.devueda;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

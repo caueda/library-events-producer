@@ -1,4 +1,4 @@
-package com.devueda.libraryeventsproducer;
+package com.devueda;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
