@@ -1,6 +1,7 @@
 package com.devueda.controller;
 
 import com.devueda.model.LibraryEvent;
+import com.devueda.model.LibraryEventType;
 import com.devueda.producer.LibraryEventProducer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class LibraryEventController {
 
     @PostMapping("/v1/libraryevent")
     public ResponseEntity<LibraryEvent> postLibraryEvent(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException {
+        libraryEvent.setLibraryEventType(LibraryEventType.NEW);
         libraryEventProducer.sendLibraryEventApproach2(libraryEvent);
-        ResponseEntity<LibraryEvent> body = ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
-        return body;
+        return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
     }
 }
