@@ -17,7 +17,7 @@ public class LibraryEventController {
 
     @PostMapping("/v1/libraryevent")
     public ResponseEntity<LibraryEvent> postLibraryEvent(@RequestBody LibraryEvent libraryEvent) throws JsonProcessingException {
-        libraryEventProducer.sendLibraryEvent(libraryEvent);
+        libraryEventProducer.sendLibraryEventApproach2(libraryEvent);
         ResponseEntity<LibraryEvent> body = ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
         return body;
     }
