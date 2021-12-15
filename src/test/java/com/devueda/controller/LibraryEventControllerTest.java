@@ -45,4 +45,22 @@ class LibraryEventControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.book.name", equalTo("Lord of The Rings")));
     }
+
+    @Test
+    void putLibraryEvent() throws Exception {
+        LibraryEvent libraryEvent = LibraryEvent
+                .builder()
+                .id(1)
+                .book(Book.builder()
+                        .id(1)
+                        .name("Lord of The Rings")
+                        .author("J. R. R. Tolkien")
+                        .build())
+                .build();
+        mockMvc.perform(post("/v1/libraryevent")
+                .content(new ObjectMapper().writeValueAsString(libraryEvent))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.book.name", equalTo("Lord of The Rings")));
+    }
 }
